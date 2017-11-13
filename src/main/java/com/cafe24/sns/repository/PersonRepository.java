@@ -8,4 +8,5 @@ import java.util.List;
 public interface PersonRepository extends CrudRepository<Person, Long> {
 	Person findById(Long id);
 	List<Person> findByName(String name);
+	List<Person> findAllByOrderByIdAsc();
 }

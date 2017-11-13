@@ -12,8 +12,17 @@ app.controller('demoController', function($scope, $http, $sce){
         url : "pokemon.json"
     }).then(function successCallback(data){
         $scope.pokemon = data;
-        console.log(data);
     }, function errorCallback(data){
         console.log(data);
     });
 });
+
+app.constant("dataUrl", "/person").controller("personController", function($scope, $http, dataUrl){
+    $scope.data = {};
+    $http.get(dataUrl).then(function successCallback(data){
+        $scope.data.person = data;
+    }, function errorCallback(data){
+        $scope.data.error = error;
+        console.log(error);
+    });
+})

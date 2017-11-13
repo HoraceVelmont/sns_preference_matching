@@ -16,7 +16,7 @@ public class Interest {
 	}
 
 	@Id
-	@Column(name ="interest_id")
+	@Column(name = "interest_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
@@ -27,19 +27,20 @@ public class Interest {
 	@Column(length = 55, nullable = false)
 	private String name;
 
-	public boolean equals(Object o){
-		Interest i = (Interest)o;
-		if(this.id == i.id)
+	public boolean equals(Object o) {
+		Interest i = (Interest) o;
+		if (this.id == i.id)
 			return true;
 		return false;
 	}
-	public Interest(String name, Category category){
-		this.name = name;
-		this.category = category;
+
+	public Interest() {
+
 	}
 
-	public Interest(){
-
+	public Interest(String name, Category category) {
+		this.name = name;
+		this.category = category;
 	}
 }
 
