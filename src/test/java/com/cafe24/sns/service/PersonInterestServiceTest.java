@@ -15,6 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PersonInterestServiceTest {
 	@Autowired
 	private PersonInterestService service;
+	@Autowired
+	private PersonService personService;
 
 	@Before
 	public void setup(){
@@ -22,14 +24,7 @@ public class PersonInterestServiceTest {
 	}
 	@Test
 	public void testPersonInterestServiceCRUD(){
-		Person p = new Person("김대훈", 27, "1.jpg");
-		Interest i = new Interest();
-		i.setName("라라랜드");
-
-		PersonInterest personInterest = new PersonInterest();
-		personInterest.setPerson(p);
-		personInterest.setInterest(i);
-		p.addPersonInterest(personInterest);
-		service.add(personInterest);
+		Person person = personService.get(2L);
+		System.out.println(person.getPersonInterestList().size());
 	}
 }

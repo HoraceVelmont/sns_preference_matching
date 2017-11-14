@@ -1,4 +1,4 @@
-package com.cafe24.sns;
+package com.cafe24.sns.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

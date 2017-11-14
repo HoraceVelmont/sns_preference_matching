@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-xs-4 col-md-4">
+        <a href="#" ng-click="removeSlot(0)">
+            <div class="thumbnail">
+                <img ng-src="images/{{slot[0].imageUrl}}" class="img-thumbnail"/>
+                <div class="caption">
+                    <h4 class="text-center">{{slot[0].name}}</h4>
+                    <p></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-3 col-md-3">
+
+        <a href="#!/match/{{slot[0].id}}/{{slot[1].id}}" ng-disabled="{{matchUnClickable()}}" ng-class="matchUnClickable() ? 'linkDisabled' : ''"
+           class="btn btn-lg btn-default" role="button" >취향 매칭 시작</a>
+        <p></p>
+        <button class="btn btn-default" ng-click="resetSlot()">슬롯 초기화</button>
+    </div>
+    <div class="col-xs-4 col-md-4">
+        <a href="#" ng-click="removeSlot(1)">
+            <div class="thumbnail">
+                <img ng-src="images/{{slot[1].imageUrl}}" class="img-thumbnail"/>
+                <div class="caption">
+                    <h4 class="text-center">{{slot[1].name}}</h4>
+                    <p></p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row center-block" ng-controller="pagingController">
+    <div class="list-group col-xs-18 col-md-12">
+        <a href="#" class="list-group-item active">
+            친구 리스트
+        </a>
+        <a href="#" class="list-group-item"
+           ng-repeat="person in data.persons.data | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize"
+           ng-click=addSlot(person)>
+
+            <div class="media-left">
+                <img class="media-matchFriend" ng-src="images/{{person.imageUrl}}"/>
+            </div>
+
+            <div class="media-body">
+                <h4 class="media-heading">{{person.name}}</h4>
+            </div>
+        </a>
+    </div>
+    <div class="pull-right btn-group">
+        <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+            Previous
+        </button>
+        {{currentPage+1}}/{{numberOfPages()}}
+        <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+            Next
+        </button>
+    </div>
+</div>

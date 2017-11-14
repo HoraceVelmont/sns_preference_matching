@@ -1,26 +1,33 @@
 package com.cafe24.sns.model;
 
-import com.fasterxml.jackson.annotation.*;
+import com.cafe24.sns.model.pk.PersonInterestPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
 
 @Entity
 @Data
-@IdClass(PersonInterestId.class)
-public class PersonInterest {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name ="person_interest_id")
-	private Long id;
+@NoArgsConstructor
+public class PersonInterest implements Serializable {
+	@EmbeddedId
+	private PersonInterestPK id = new PersonInterestPK();
 
 	@ManyToOne
-	@JoinColumn(name = "interest")
+	@MapsId("interest")
 	private Interest interest;
 
 	@ManyToOne
-	@JoinColumn(name ="person")
+	@MapsId("person")
 	@JsonIgnore
 	private Person person;
+
+
+	public void setPersonInterest(Person person, Interest interest){
+		this.person = person;
+		this.interest = interest;
+		person.addPersonInterest(this);
+	}
 }

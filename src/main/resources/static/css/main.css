@@ -8,3 +8,8 @@
 .sns-nav{
     padding : 0 0 10px 0;
 }
+
+.linkDisabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}

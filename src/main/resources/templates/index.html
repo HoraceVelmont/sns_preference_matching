@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org"  ng-app="app" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" ng-app="app" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Angular Test</title>
@@ -8,22 +8,27 @@
     <script src="/webjars/angularjs/1.6.6/angular.js"></script>
     <script src="/webjars/angularjs/1.6.6/angular-resource.js"></script>
     <script src="/webjars/angularjs/1.6.6/angular-route.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.css"/>
+    <script>
+        angular.module("app", ['ngRoute', 'ngResource', 'snsFilters']);
+    </script>
+    <script src="/js/controllers/matchController.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/controller.js"></script>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
-     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.css"/>
+    <script src="/js/controllers/snsController.js"></script>
+    <script src="/js/controllers/pagingController.js"></script>
+    <script src="/js/filters/snsFilters.js"></script>
     <link rel="stylesheet" href="/css/main.css"/>
-    <script>
-    </script>
 </head>
 
-<body ng-controller="personController">
+<body ng-controller="snsController">
 
 <div class="container sns">
     <div class="row">
         <div class="center-block col-xs-18 col-md-12">
             <div class="page-header text-center" >
-                <h1>SNS 친구 매칭 시스템<small> for CAFE24</small></h1>
+                <h3>SNS 친구 매칭 시스템<small> for CAFE24</small></h3>
             </div>
         </div>
     </div>
@@ -42,47 +47,9 @@
             </ul>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-4 col-md-4">
-            <div class="thumbnail">
-                <img ng-src="images/slot.jpg" class="img-thumbnail"/>
-                <div class="caption">
-                    <h3>이름</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-2 col-md-2">
-            <button class="btn-default">취향 매칭 시작</button>
-            <button class="btn-default">초기화</button>
-        </div>
-        <div class="col-xs-4 col-md-4">
-            <div class="thumbnail ">
-                <img ng-src="images/slot.jpg" class="img-thumbnail"/>
-                <div class="caption">
-                    <h3>이름</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row center-block">
-        <div class="list-group col-xs-18 col-md-12">
-            <a href="#" class="list-group-item active">
-                친구 리스트
-            </a>
-            <a href="#" class="list-group-item" ng-repeat="person in data.person.data">
-                <div class="media-left">
-                    <img class="media-object" ng-src="images/{{person.imageUrl}}"/>
-                </div>
 
-                <div class="media-body">
-                    <h4 class="media-heading">{{person.name}}</h4>
-                </div>
-            </a>
-        </div>
-    </div>
+    <ng-view/>
 </div>
-
-
 
 </body>
 </html>

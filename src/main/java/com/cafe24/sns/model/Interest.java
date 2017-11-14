@@ -1,8 +1,8 @@
 package com.cafe24.sns.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Interest {
 	public enum Category {
 		RESTAURANT, MOVIE, MUSIC;
@@ -27,20 +28,10 @@ public class Interest {
 	@Column(length = 55, nullable = false)
 	private String name;
 
-	public boolean equals(Object o) {
-		Interest i = (Interest) o;
-		if (this.id == i.id)
-			return true;
-		return false;
-	}
-
-	public Interest() {
-
-	}
-
-	public Interest(String name, Category category) {
-		this.name = name;
+	public Interest(Long id, Category category, String name){
+		this.id = id;
 		this.category = category;
+		this.name = name;
 	}
 }
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/persons")
 public class PersonController {
 	@Autowired
 	private PersonService personService;

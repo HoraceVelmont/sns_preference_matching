@@ -1,0 +1,61 @@
+<div class="row" ng-controller="matchController">
+    <div class="col-xs-4 col-md-4">
+        <a href="#" ng-click="removeSlot(0)">
+            <div class="thumbnail">
+                <img ng-src="images/{{slot[0].imageUrl}}" class="img-thumbnail"/>
+                <div class="caption">
+                    <h4 class="text-center">{{slot[0].name}}</h4>
+                    <p></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-3 col-md-3">
+
+        <a href="/" class="btn btn-lg btn-default" role="button">다시 하기</a>
+    </div>
+    <div class="col-xs-4 col-md-4">
+        <a href="#">
+            <div class="thumbnail">
+                <img ng-src="images/{{slot[1].imageUrl}}" class="img-thumbnail"/>
+                <div class="caption">
+                    <h4 class="text-center">{{slot[1].name}}</h4>
+                    <p></p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row center-block" ng-controller="pagingController">
+    <div class="list-group col-xs-8 col-md-6">
+        <a class="list-group-item active">
+            친구 매칭 결과d - {{$scope.slot[0].name}}{{$scope.data.persons.data[0]}}{{$scope.match}}
+        </a>
+        <a  class="list-group-item" ng-repeat="data in $scope.data.persons. data[0]" >
+
+            <div class="media-left">
+                <img class="media-matchFriend" ng-src="images/{{data.owner.imageUrl}}"/>
+            </div>
+
+            <div class="media-body">
+                <h4 class="media-heading">{{person.name}}</h4>
+                <p></p>
+            </div>
+        </a>
+    </div>
+    <div class="list-group col-xs-8 col-md-6">
+        <a  class="list-group-item active">
+            친구 매칭 결과 - {{$scope.slot[1].name}}
+        </a>
+        <a class="list-group-item" ng-repeat="person in data.match.data">
+
+            <div class="media-left">
+                <img class="media-matchFriend" ng-src="images/{{person.imageUrl}}"/>
+            </div>
+
+            <div class="media-body">
+                <h4 class="media-heading">{{person.name}}</h4>
+            </div>
+        </a>
+    </div>
+</div>

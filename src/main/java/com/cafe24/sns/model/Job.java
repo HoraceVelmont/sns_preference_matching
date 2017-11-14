@@ -3,10 +3,11 @@ package com.cafe24.sns.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
-public class Job {
+public class Job  {
 	public enum Type {
 		School, Company;
 	}
